@@ -1,0 +1,28 @@
+.input-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.input-form input {
+    padding: 10px;
+    border: 1px solid #007AFF;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.input-form button {
+    background-color: #007AFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.input-form button:hover {
+    background-color: #0055A4;
+}

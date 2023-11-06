@@ -1,19 +1,20 @@
-// InputForm.js
+import React, { useState } from 'react';
+import './InputForm.css'
 
-import React from 'react';
+const InputForm = ({ city, onCityChange, onFetchData }) => {
 
-function InputForm({ city, onCityChange, onFetchData }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         onFetchData();
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="input-form" onSubmit={handleSubmit}>
             <input type="text" value={city} onChange={(e) => onCityChange(e.target.value)} />
-            <button type="submit">Fetch Weather Data</button>
+            <button type="submit">Search</button>
         </form>
     );
-}
+};
 
 export default InputForm;
+

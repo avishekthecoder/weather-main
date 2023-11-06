@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import InputForm from './InputForm';
-import WeatherResult from './WeatherResult';
+import InputForm from './Components/InputForm';
+import WeatherResult from './Components/WeatherResult';
+import './App.css'
 
 function App() {
   const [city, setCity] = useState('');
@@ -13,7 +14,7 @@ function App() {
   const fetchWeatherData = async () => {
     try {
       // Make the API request to fetch weather data for the specified city
-      const response = await fetch(`http://localhost:8080/weather?city=${city}`);
+      const response = await fetch(`https://exp-weather-spring-app-weather-me.azuremicroservices.io/weather?city=${city}`);
       console.log(response)
       if (response.ok) {
         const data = await response.json();
