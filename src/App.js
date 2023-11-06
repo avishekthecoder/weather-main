@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import InputForm from './InputForm';
+import WeatherResult from './WeatherResult';
 
 function App() {
+  const [city, setCity] = useState('');
+  const [weatherData, setWeatherData] = useState(null);
+
+  const handleCityChange = (newCity) => {
+    setCity(newCity);
+  }
+
+  const fetchWeatherData = async () => {
+    try {
+      // Make the API request to fetch weather data for the specified city
+      const response = await fetch(`http://localhost:8080/weather?city=${city}`);
+      console.log(response)
+      if (response.ok) {
+        const data = await response.json();
+        setWeatherData(data);
+      } else {
+        console.error('Failed to fetch weather data');
+      }
+    } catch (error) {
+      console.error('An error occurred while fetching weather data', error);
+    }
+  }
+
+  useEffect(() => {
+    if (city) {
+      fetchWeatherData();
+    }
+  }, [city]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <h1>Weather Forecast App</h1>
+        <InputForm city={city} onCityChange={handleCityChange} onFetchData={fetchWeatherData} />
+        <WeatherResult data={weatherData} />
+      </div>
   );
 }
 

@@ -1,0 +1,37 @@
+.weather-day {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #333;
+}
+
+p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.weather-day p:nth-child(odd) {
+    color: #555;
+}
+
+.weather-day p:last-child {
+    margin-bottom: 0;
+}
+
+.weather-day p:empty {
+    display: none;
+}
+
+.weather-day p.warning {
+    color: #ff0000;
+    font-weight: bold;
+}
