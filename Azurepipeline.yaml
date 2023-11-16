@@ -1,0 +1,42 @@
+trigger:
+  - manual
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  azureSubscription: 'avidatta1@publicisgroupe.net'
+  resourceGroupName: 'Personal-Learning'
+  acrName: 'weatherappreg'
+  imageFullName: 'weatherappreg/frontend:latest'
+  acrLoginServer: 'weatherappreg.azurecr.io'
+  acrAccessKey: 'tnQ7DHr+mq25FdogWG/XUq1hfmXbg45f94unNTfBXb+ACRBz5d7n'
+
+steps:
+  - task: Docker@2
+    inputs:
+      command: build
+      image: $(imageFullName)
+      dockerfile: './Dockerfile'
+
+
+  - task: Docker@2
+    inputs:
+      command: tag
+      sourceImage: $(imageFullName)
+      targetImage: $(acrLoginServer)/$(imageFullName)
+
+
+  - task: Docker@2
+    displayName: 'Login to Azure Container Registry'
+    inputs:
+      command: login
+      username: $(acrLoginServer)
+      password: $(acrAccessKey)
+
+
+  - task: Docker@2
+    displayName: 'Push Docker Image to Azure Container Registry'
+    inputs:
+      command: push
+      imageName: $(acrLoginServer)/$(imageFullName)
