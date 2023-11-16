@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import InputForm from './Components/InputForm';
 import WeatherResult from './Components/WeatherResult';
 import './App.css'

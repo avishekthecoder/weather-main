@@ -1,6 +1,6 @@
 import React from "react";
 import './Card.css'
-import { Cloudy } from 'lucide-react';
+import {Cloudy} from 'lucide-react';
 import {formatDateTime} from "../utils";
 
 const Card = ({day,index}) => {
