@@ -32,7 +32,7 @@ function App() {
     if (city) {
       fetchWeatherData();
     }
-  }, [city]);
+  }, [city, fetchWeatherData]);
 
   return (
       <div>
