@@ -28,11 +28,11 @@ function App() {
     }
   }
 
+  // eslint-disable-next-line
   useEffect(() => {
-    if (city) {
       fetchWeatherData();
-    }
-  }, [city, fetchWeatherData]);
+    // eslint-disable-next-line
+  }, [city]);
 
   return (
       <div>
