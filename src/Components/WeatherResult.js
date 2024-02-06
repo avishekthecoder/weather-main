@@ -1,3 +1,5 @@
+// WeatherResult.js
+
 import React from 'react';
 import Card from './Card';
 import './WeatherResult.css';
@@ -19,6 +21,6 @@ const WeatherResult = ({ data }) => {
             </div>
         </div>
     );
-}
+};
 
 export default WeatherResult;
